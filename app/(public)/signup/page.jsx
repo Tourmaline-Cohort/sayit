@@ -25,6 +25,9 @@ const SignUpPage = () => {
         
         // const { name, email, password } = formData;
         const result = signup(formData.name, formData.email, formData.password);
+        if (result.error) {
+            setError(result.error);
+        }
     };
 
     const handleChange = (event) => {
@@ -40,6 +43,7 @@ const SignUpPage = () => {
             <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
                 <h1 className="text-3xl font-bold mb-4">Sign Up</h1>
                 <p className="text-gray-600 mb-6">Create an account to continue.</p>
+                {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                 <form action="" className=" p-6 space-y-4 w-full">
                     <div>
                         <label htmlFor="name" className="block text-gray-700 mb-2">Name</label>

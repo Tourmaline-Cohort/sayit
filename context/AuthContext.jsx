@@ -27,8 +27,8 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = (email, password) => {
-        const existingUser = JSON.parse(localStorage.getItem("userData")) || [];
-        const foundUser = existingUser.find(user => user.email === userData.email && user.password === password);
+        const existingUser = JSON.parse(localStorage.getItem("appUsers")) || [];
+        const foundUser = existingUser.find(user => user.email === email && user.password === password);
 
         if (!foundUser) { 
             return { error: "Invalid credentials" };
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const signup = (name, email, password) => {
-        const existingUsers = JSON.parse(localStorage.getItem("userData")) || [];
+        const existingUsers = JSON.parse(localStorage.getItem("appUsers")) || [];
         const userExists = existingUsers.some(user => user.email === email);
 
         if (userExists) {
@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
         const newUser = { name, email, password };
         const updatedUsers = [...existingUsers, newUser];
-        localStorage.setItem("userData", JSON.stringify(updatedUsers));
+        localStorage.setItem("appUsers", JSON.stringify(updatedUsers));
         return login(email, password);
     }
 
