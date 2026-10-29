@@ -6,7 +6,7 @@ import { useAuth } from "@/context/AuthContext";
 
 const Sidebar = () => {
     const pathname = usePathname();
-    const { logout } = useAuth(); 
+    const { logout } = useAuth();
 
     const sidebarLinks = [
         { name: "Dashboard", link: "/dashboard" },
@@ -40,6 +40,9 @@ const Sidebar = () => {
 
             {/* Logout Button */}
             <div className="px-4 mt-auto">
+
+                {/* Display user email here */}
+
                 <button
                     onClick={logout}
                     className="w-full text-left px-4 py-2 text-red-300 hover:bg-sky-800 rounded transition-colors"

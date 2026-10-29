@@ -3,10 +3,12 @@
 
 
 
+import { useAuth } from "@/context/AuthContext";
 import { usePathname } from "next/navigation";
 
 const TopNav = () => {
     const pathname = usePathname();
+    const { user } = useAuth(); // Destructure user from context
 
     const pageTitle = pathname === "/"
         ? "Home"
@@ -18,6 +20,9 @@ const TopNav = () => {
                 <h1 className="text-xl font-semibold text-gray-800">
                     {pageTitle}
                 </h1>
+                <p className="text-sm text-gray-500">
+                    Good afternoon {user?.name || "Guest"}
+                </p>
             </div>
 
             <div className="flex items-center gap-4">
