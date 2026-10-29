@@ -10,7 +10,7 @@ const PostCard = ({ post }) => {
             <div className="flex flex-wrap gap-2 mt-2">
                 {tags.map((tag, index) => (
                     <span key={index} className="bg-blue-100 text-blue-800 text-xs font-semibold me-2 px-2.5 py-0.5 rounded">
-                        {tag}
+                        {tag.charAt(0).toUpperCase() + tag.slice(1)}
                     </span>
                 ))}
             </div>
